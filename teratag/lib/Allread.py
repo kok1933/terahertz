@@ -49,6 +49,26 @@ class allread:
 
         return x_all
 
+    def Frequency_Intencity_is_TPG(self,file,first,last):
+        self.df = pd.read_table(file, engine='python', index_col=0)
+        self.file = file
+        self.first_freq = first
+        self.last_freq = last
+        x_list = []
+        self.df = self.df[first:last]
+        print(self.df)
+        #self.min_max_normalization()
+
+        self.graph_Frequency_trans_reflect_is_TPG()
+        print(self.df)
+        for j in self.df.iloc[:, 0]:
+            x_list.append(j)
+
+        #[1.12, 1.23, 1.3, 1.36, 1.45, 1.55, 1.6]
+        x_all = np.array([x_list])
+
+        return x_all
+
     def Frequency_trans_reflect_is_TPG(self,file,ref,first,last):
         self.df = pd.read_table(file, engine='python',index_col=0)
         self.file = file
@@ -106,9 +126,11 @@ class allread:
         return
 
     def graph_Frequency_trans_reflect_is_TPG(self):
+
         plt.style.use('ggplot')
         df = self.df
         df.columns = [self.method]
+        matplotlib.rcParams['font.family'] = 'AppleGothic'
         #散布図
         #fig, axes = plt.subplots(2, 2, figsize=(14, 10), sharey=True)
         df.plot()
