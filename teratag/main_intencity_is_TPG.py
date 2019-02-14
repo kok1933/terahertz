@@ -18,6 +18,7 @@ med = [ 'グルコース', 'ラクトース']
 #試薬の数だけ繰り返すように組んでいこう
 #mainデータを読み込む。
 #ここでディレクトリの移動をするので開きたいファイルのパスを入力してください
+#uuuuu
 os.chdir('/Users/toshinari/Downloads/暫定')
 for w in med:
     for j in glob.glob("{0}*.txt".format(w)):
